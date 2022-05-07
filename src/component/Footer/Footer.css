@@ -1,0 +1,11 @@
+.footer_part{
+    background: #263967;
+    color: #fff;
+    padding: 30px 0;
+}
+.footer_part ul{
+    padding-left: 0;
+}
+.footer_part ul li{
+    list-style: none;
+}
