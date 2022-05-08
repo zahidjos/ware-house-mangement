@@ -9,6 +9,10 @@ import MangeItem from './component/MangeItem/MangeItem';
 import MyItem from './component/MyItem/MyItem';
 import Registration from './component/Registration/Registration';
 import LogIn from './component/LogIn/LogIn';
+import UpdateItem from './component/UpdateItem/UpdateItem';
+import StockItem from './component/StockItem/StockItem';
+import RequireAuth from './component/RequireAuth/RequireAuth';
+import NotFound from './component/NotFound/NotFound';
 
 function App() {
   return (
@@ -19,11 +23,19 @@ function App() {
      <Routes>
        <Route path='/' element={<Home></Home>}></Route>
        <Route path='/home' element={<Home></Home>}></Route>
-       <Route path='/addItem' element={<AddItem></AddItem>}></Route>
-       <Route path='/mangeItem' element={<MangeItem></MangeItem>}></Route>
+       <Route path='/addItem' element={<RequireAuth>
+       <AddItem></AddItem></RequireAuth>}></Route>
+       <Route path='/mangeItem' element={<RequireAuth>
+       <MangeItem></MangeItem>
+       </RequireAuth>}></Route>
        <Route path='/myItem' element={<MyItem></MyItem>}></Route>
        <Route path='/registration' element={<Registration></Registration>}></Route>
        <Route path='/logIn' element={<LogIn></LogIn>}></Route>
+       <Route path='/update/:id' element={<RequireAuth>
+       <UpdateItem></UpdateItem>
+       </RequireAuth>}></Route>
+       <Route path='/stockItem/:id' element={<StockItem></StockItem>}></Route>
+       <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
      
      

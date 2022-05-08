@@ -7,7 +7,7 @@ const Registration = () => {
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
 
     const handelRegistration=async(event)=>{
         event.preventDefault();

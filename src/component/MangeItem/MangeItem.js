@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import CardMange from '../CardMange/CardMange';
+import UseHook from '../UseHook/UseHook';
+
 
 const MangeItem = () => {
+   
+    const [data,setData]=UseHook()
     return (
         <div>
-            <h1>Hi am mange part</h1>
+            <div className="container">
+                <div className="row">
+                {
+                data.map((singleData)=>
+                <CardMange truckData={singleData}></CardMange> 
+                )
+            }
+            </div>
+            </div>
         </div>
     );
 };
