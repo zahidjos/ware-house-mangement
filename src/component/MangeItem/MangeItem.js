@@ -5,14 +5,16 @@ import UseHook from '../UseHook/UseHook';
 
 const MangeItem = () => {
    
-    const [data,setData]=UseHook()
+    const [data,setData]=UseHook();
+    
+
     return (
         <div>
             <div className="container">
                 <div className="row">
                 {
                 data.map((singleData)=>
-                <CardMange truckData={singleData}></CardMange> 
+                <CardMange truckData={singleData} setData={setData}></CardMange> 
                 )
             }
             </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../Service.fig';
+import './Additem.css'
 
 
 const AddItem = () => {
@@ -40,28 +41,31 @@ const AddItem = () => {
   }
     return (
         <div>
-            <div className="container">
+            <div className="container mt-3">
+                <h2 className='text-center'>ADD ITEM</h2>
+                <div className='add_form'>
             <form onSubmit={handelAdd}>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" value={user.email}  name='email' id="exampleInputEmail1" aria-describedby="emailHelp"/>
+    <input type="email" className="form-control" value={user.email}  name='email' id="exampleInputEmail1" aria-describedby="emailHelp"/>
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
-  <input type="text" name="name" id="" placeholder='Enter Model Name' /> <br />
-  <textarea name="description" id="" placeholder='Short Description' cols="30" rows="10"></textarea>
+  <input type="text" className="form-control" name="name" id="" placeholder='Enter Model Name' /> <br />
+  <textarea name="description" className="form-control" id="" placeholder='Short Description' cols="30" rows="10"></textarea>
   <br />
-  <input type="number" placeholder='price' name="price" id="" />
+  <input type="number" className="form-control" placeholder='price' name="price" id="" />
   <br />
-  <input type="number" placeholder='Enter quantity' name="quantity" id="" />
+  <input type="number" className="form-control" placeholder='Enter quantity' name="quantity" id="" />
   <br />
-   <input type="text" placeholder='Supplier Name' name="supplier" id="" />
+   <input type="text" className="form-control" placeholder='Supplier Name' name="supplier" id="" />
    <br />
-   <input type="text" placeholder='Image Link' name="image" id="" />
+   <input type="text" className="form-control" placeholder='Image Link' name="image" id="" />
    <br />
   
   
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
             </div>
         </div>
     );
