@@ -10,7 +10,7 @@ const MyItem = () => {
       },[])
       console.log(item)
     return (
-        <div className='container'>
+        <div className='container mt-3'>
             <div className="row">
             {item.map(singleItem=><ItemCard singleItem={singleItem}></ItemCard>)
             }

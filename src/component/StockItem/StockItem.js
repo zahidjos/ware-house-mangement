@@ -36,14 +36,16 @@ const StockItem = () => {
     
     return (
         <div>
-            <p>{params.id}</p>
-            <form onSubmit={stockUpdate}>
-  
-               <input type="number" name="number" id="" />
-        
-    
-             <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+            <div className="container">
+            <div className='w-50 m-auto mt-3'>
+                <form onSubmit={stockUpdate}>
+                <input type="number" placeholder='Enter Number of stock' className="form-control" name="number" id="" />
+                 <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
+           
+            </div>
+            
         </div>
     );
 };
