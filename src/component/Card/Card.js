@@ -9,7 +9,7 @@ const Card = (props) => {
        navigate(`/update/${id}`);
     }
     return (
-        <div className='col-lg-4'>
+        <div className='col-lg-4 mb-3'>
             <div className="card" >
   <img src={image} className="card-img-top" alt="..."/>
   <div className="card-body">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
+import './Products.css';
 
 
 const Products = () => {
@@ -12,9 +13,10 @@ const Products = () => {
     
    
     return (
-        <div>
+        <div className='stock_part'>
             <div className="container">
-                <div className="row">
+                <h2 className='text-center'>Our Stock Truck</h2>
+                <div className="row mt-3">
                 {
                 data.map((singleData)=>
                 <Card truckData={singleData}></Card>
