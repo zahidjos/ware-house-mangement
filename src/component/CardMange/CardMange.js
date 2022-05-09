@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UseHook from '../UseHook/UseHook';
 
@@ -11,6 +11,7 @@ const CardMange = (props) => {
        navigate(`/update/${id}`);
     }
     const [data,setData]=UseHook()
+  
 
     const handelDelete= async(id)=>{
         const url=`https://sheltered-inlet-82200.herokuapp.com/delete/${id}`
@@ -20,7 +21,7 @@ const CardMange = (props) => {
         .then(res=>res.json())
         .then(resdata=>{
             const remaining=data.filter(singleData=>singleData._id!==id);
-            setData(remaining);
+           setData(remaining);
         })
 
         
