@@ -3,26 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import UseHook from '../UseHook/UseHook';
 
 const CardMange = (props) => {
-
+    const [data,setData]=UseHook()
     const {name,image,price,description,quantity,supplier,_id}=props.truckData;
     
     const navigate=useNavigate()
     const handelUpdate=(id)=>{
        navigate(`/update/${id}`);
     }
-    const [data,setData]=UseHook()
+    
   
 
-    const handelDelete= async(id)=>{
-        const url=`https://sheltered-inlet-82200.herokuapp.com/delete/${id}`
-       await fetch(url,{
-            method:'DELETE'
-        })
-        .then(res=>res.json())
-        .then(resdata=>{
-            const remaining=data.filter(singleData=>singleData._id!==id);
-           setData(remaining);
-        })
+    const handelDelete= (id)=>{
+        const sureDelete=window.confirm("Are you sure delete")
+        if(sureDelete){
+            const url=`https://sheltered-inlet-82200.herokuapp.com/delete/${id}`
+             fetch(url,{
+                 method:'DELETE'
+             })
+             .then(res=>res.json())
+             .then(resdata=>{
+                 if(resdata.deletedCount>0){
+                     const remaining=data.filter(singleData=>singleData._id!==id);
+                     setData(remaining);
+                     console.log('data deleted')
+                     console.log(data);
+                     console.log(remaining);
+                 } 
+                
+             })
+        }
+       
 
         
        

@@ -13,6 +13,7 @@ import UpdateItem from './component/UpdateItem/UpdateItem';
 import StockItem from './component/StockItem/StockItem';
 import RequireAuth from './component/RequireAuth/RequireAuth';
 import NotFound from './component/NotFound/NotFound';
+import DeleteData from './component/DeleteData/DeleteData';
 
 function App() {
   return (

@@ -14,7 +14,7 @@ const MangeItem = () => {
                 <div className="row">
                 {
                 data.map((singleData)=>
-                <CardMange truckData={singleData} setData={setData}></CardMange> 
+                <CardMange truckData={singleData} key={singleData._id}></CardMange> 
                 )
             }
             </div>
