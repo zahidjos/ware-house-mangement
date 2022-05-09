@@ -14,6 +14,7 @@ import StockItem from './component/StockItem/StockItem';
 import RequireAuth from './component/RequireAuth/RequireAuth';
 import NotFound from './component/NotFound/NotFound';
 import DeleteData from './component/DeleteData/DeleteData';
+import Blog from './component/Blog/Blog';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
        <UpdateItem></UpdateItem>
        </RequireAuth>}></Route>
        <Route path='/stockItem/:id' element={<StockItem></StockItem>}></Route>
+       <Route path='/blog' element={<Blog></Blog>}></Route>
        <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
      
