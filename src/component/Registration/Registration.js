@@ -1,6 +1,8 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../Service.fig'
+import './Registration.css'
 const Registration = () => {
     const [
         createUserWithEmailAndPassword,
@@ -8,6 +10,7 @@ const Registration = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
+      const [signInWithGoogle, user3, loading3, error3] = useSignInWithGoogle(auth);
 
     const handelRegistration=async(event)=>{
         event.preventDefault();
@@ -18,8 +21,9 @@ const Registration = () => {
     }
     return (
         <div>
-            <div className="container">
-            <h1>Hi am registration part</h1>
+            <div className="container mt-5">
+            <h1 className='text-center'> Registration part</h1>
+            <div className='registration_form'>
             <form onSubmit={handelRegistration}>
   <div className="mb-3">
     <label  className="form-label">Email address</label>
@@ -31,12 +35,15 @@ const Registration = () => {
     <input type="password" name='password' className="form-control" id="exampleInputPassword1"/>
   </div>
   <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" >Check me out</label>
+  <p>Already have account. <Link to='/logIn'>please go to Log In</Link> </p>
   </div>
   <button type="submit" className="btn btn-primary">Submit</button>
 </form> 
 <p>{error?error.message:""}</p>
+<div className='text-center mt-5'>
+<button type="button" class="btn btn-success m-auto" onClick={()=>signInWithGoogle()}>Google sign In</button>
+</div>
+</div>
 
             </div>
             

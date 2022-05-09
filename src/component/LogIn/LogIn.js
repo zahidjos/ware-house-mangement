@@ -1,18 +1,24 @@
-import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { async } from '@firebase/util';
+import React, { useRef } from 'react';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Service.fig';
+import './LogIn.css'
 
 
 const LogIn = () => {
   const [
     signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
+    user1,
+    loading1,
+    error1,
   ] = useSignInWithEmailAndPassword(auth);
+  const [user, loading, error] = useAuthState(auth);
+  const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(auth);
+  const [signInWithGoogle, user3, loading3, error3] = useSignInWithGoogle(auth);
   const navigate=useNavigate();
   let location = useLocation();
+  const emailRef=useRef('')
   let from = location.state?.from?.pathname || "/";
 
   const handelLogIn=async(event)=>{
@@ -20,17 +26,25 @@ const LogIn = () => {
     let email=event.target.email.value;
     let password=event.target.password.value;
    await signInWithEmailAndPassword(email,password);
-   navigate(from, { replace: true });
+ 
         
+}
+const handelPassword=async()=>{
+  let passwordEmail=emailRef.current.value;
+  await sendPasswordResetEmail(passwordEmail);
+}
+if(user){
+  navigate(from, { replace: true });
 }
     return (
         <div>
-            <div className="container">
-            <h1>Hi am login part</h1>
+            <div className="container mt-5">
+            <h1 className='text-center'> login part</h1>
+            <div className='login_from'>
             <form onSubmit={handelLogIn}>
   <div className="mb-3">
     <label  className="form-label">Email address</label>
-    <input type="email" name='email' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+    <input type="email" ref={emailRef} name='email' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div className="mb-3">
@@ -38,12 +52,20 @@ const LogIn = () => {
     <input type="password" name='password' className="form-control" id="exampleInputPassword1"/>
   </div>
   <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" >Check me out</label>
+    <p>You have no account. <Link to='/registration'>please registration</Link> </p>
   </div>
+ 
   <button type="submit" className="btn btn-primary">Submit</button>
-  <p>{error?error.message:""}</p>
+  
+  
 </form>
+<button type="button" onClick={handelPassword} class="btn btn-secondary mt-3">Reset Password</button>
+<p className='text-danger'>{error1?error1.message:""}</p>
+<div className='text-center mt-5'>
+<button type="button" class="btn btn-success m-auto" onClick={()=>signInWithGoogle()}>Google sign In</button>
+</div>
+
+</div>
             </div>
             
         </div>
