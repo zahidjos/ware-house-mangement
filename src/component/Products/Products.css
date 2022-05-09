@@ -1,3 +1,17 @@
 .stock_part{
     padding: 50px 0;
 }
+
+.mange_button{
+    text-align: center;
+}
+.mange_button a{
+    text-decoration: none;
+    padding: 10px 20px;
+   background-color: rgba(6, 6, 112, 0.703);
+   color: #fff;
+   font-weight: 600;
+   font-size: 20px;
+   border-radius: 5px;
+   display: inline-block;
+}

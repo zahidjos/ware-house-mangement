@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import './Products.css';
 
@@ -23,6 +24,9 @@ const Products = () => {
                 )
             }
                 </div>
+                <div className='mange_button'>
+            <Link to='/mangeItem'>Mange Item</Link> 
+            </div>
             </div>
             
         </div>
